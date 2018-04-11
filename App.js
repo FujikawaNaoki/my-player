@@ -4,7 +4,8 @@ import {
     Dimensions,
     Text,
     View,
-    SafeAreaView
+    SafeAreaView,
+    TouchableHighlight
 } from 'react-native';
 import {
     Video,
@@ -65,9 +66,9 @@ export default class App extends React.Component {
             age: null,
             cnt: "  ",
             selected0Index: null,
-            selected1Index: 0,
+            selected1Index: null,
             selected2Index: null,
-            selected3Index: 0
+            selected3Index: null
         };
 
         this.update0Index = this.update0Index.bind(this);
@@ -83,6 +84,9 @@ export default class App extends React.Component {
         if (this.state.selected0Index === null) {
             this.setState({
                 selected0Index: 0,
+                selected1Index: null,
+                selected2Index: null,
+                selected3Index: null,
                 id: 1234567890,
                 name: "東京　太郎",
                 sex: "男",
@@ -92,11 +96,14 @@ export default class App extends React.Component {
         } else {
             this.setState({
                 selected0Index: null,
+                selected1Index: null,
+                selected2Index: null,
+                selected3Index: null,
                 id: null,
                 name: null,
                 sex: null,
                 age: null,
-                cnt: "  "
+                cnt: "  ",
             })
         }
     }
@@ -121,11 +128,13 @@ export default class App extends React.Component {
         console.log("window.width", width);
         console.log("window.height", height);
 
-        width = width * 0.8 * 0.9;
-        height = 960 * (width / 1520);
+        let f_width = width * 0.8 * 0.9;
+        let f_height = 960 * (f_width / 1520);
 
         console.log("video_width", width);
         console.log("video_height", height);
+
+        let buGrpWidth = width * 0.2 * 0.7;
 
         return (
             <SafeAreaView style={styles.container}>
@@ -133,23 +142,13 @@ export default class App extends React.Component {
                     <Col size={20}>
                         <View style={styles.leftContainer}>
                             <Row>
-                                <Button
-                                    title="患者情報取得"
-                                    //outline
+                                <ButtonGroup
+                                    textStyle={{color: "white"}}
                                     onPress={this.update0Index}
-                                    buttonStyle={{
-                                        borderColor: "white",
-                                        borderWidth: 0,
-                                        borderRadius: 10,
-                                    }}
+                                    selectedIndex={this.state.selected0Index}
+                                    buttons={["患者情報取得"]}
+                                    containerStyle={{height: 30, width: buGrpWidth, borderRadius: 15, backgroundColor: "gray"}}
                                 />
-                                {/*<ButtonGroup*/}
-                                    {/*textStyle={{color: "white"}}*/}
-                                    {/*onPress={this.update0Index}*/}
-                                    {/*selectedIndex={this.state.selected0Index}*/}
-                                    {/*buttons={["患者情報取得"]}*/}
-                                    {/*containerStyle={{height: 35, width: 150, borderRadius: 10, backgroundColor: "gray"}}*/}
-                                {/*/>*/}
                             </Row>
                             <Row style={{marginRight: "auto"}}>
                                 <FormLabel labelStyle={{color: "gray"}}
@@ -175,26 +174,29 @@ export default class App extends React.Component {
                             </Row>
                             <Row>
                                 <ButtonGroup
+                                    textStyle={{color: "white"}}
                                     onPress={this.update1Index}
                                     selectedIndex={this.state.selected1Index}
                                     buttons={['記録', '取消', '終了']}
-                                    containerStyle={{height: 100,width: 80}}
+                                    containerStyle={{height: 30,width:buGrpWidth,borderRadius: 15,backgroundColor: "gray"}}
                                 />
                             </Row>
                             <Row>
                                 <ButtonGroup
+                                    textStyle={{color: "white"}}
                                     onPress={this.update2Index}
                                     selectedIndex={this.state.selected2Index}
                                     buttons={["Voice"]}
-                                    //containerStyle={{height: 100}}
+                                    containerStyle={{height: 30,width:buGrpWidth,borderRadius: 15,backgroundColor: "gray"}}
                                 />
                             </Row>
                             <Row>
                                 <ButtonGroup
+                                    textStyle={{color: "white"}}
                                     onPress={this.update3Index}
                                     selectedIndex={this.state.selected3Index}
                                     buttons={["1", "2", "3", "4"]}
-                                    //containerStyle={{height: 100}}
+                                    containerStyle={{height: 30,width:buGrpWidth,borderRadius: 15,backgroundColor: "gray"}}
                                 />
                             </Row>
                         </View>
@@ -207,7 +209,7 @@ export default class App extends React.Component {
                                 resizeMode={Expo.Video.RESIZE_MODE_CONTAIN}
                                 rate={1.0}
                                 volume={this.state.volume}
-                                style={{width, height}}
+                                style={{width:f_width , height:f_height}}
                                 isMuted={this.state.mute}
                                 useNativeControls={true}
                             />
