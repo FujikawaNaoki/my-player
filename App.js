@@ -140,7 +140,7 @@ export default class App extends React.Component {
                         <View style={styles.leftContainer}>
                             <Row>
                                 <ButtonGroup
-                                    textStyle={{color: "white"}}
+                                    textStyle={{color: "black"}}
                                     onPress={this.update0Index}
                                     selectedIndex={this.state.selected0Index}
                                     buttons={["患者情報取得"]}
@@ -184,7 +184,7 @@ export default class App extends React.Component {
                                         height: 30,
                                         width: buGrpWidth,
                                         borderRadius: 15,
-                                        backgroundColor: "gray"
+                                        backgroundColor: "black"
                                     }}
                                 />
                             </Row>
@@ -198,7 +198,7 @@ export default class App extends React.Component {
                                         height: 30,
                                         width: buGrpWidth,
                                         borderRadius: 15,
-                                        backgroundColor: "gray"
+                                        backgroundColor: "black"
                                     }}
                                 />
                             </Row>
@@ -212,7 +212,7 @@ export default class App extends React.Component {
                                         height: 30,
                                         width: buGrpWidth,
                                         borderRadius: 15,
-                                        backgroundColor: "gray"
+                                        backgroundColor: "black"
                                     }}
                                 />
                             </Row>
