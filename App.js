@@ -7,7 +7,8 @@ import {
     SafeAreaView
 } from 'react-native';
 import {
-    Video
+    Video,
+    Constants
 } from 'expo';
 
 import {
@@ -18,6 +19,7 @@ import {
 
 import {
     FormLabel,
+    FormInput,
     ButtonGroup,
     Button
 } from 'react-native-elements';
@@ -25,20 +27,20 @@ import {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'gray',
+        backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center',
     },
     rightContainer: {
         flex: 1,
-        backgroundColor: 'gray',
+        backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center',
     },
     leftContainer: {
         flex: 1,
-        backgroundColor: 'gray',
-        //alignItems: 'left',
+        backgroundColor: 'black',
+        alignItems: 'center',
         justifyContent: 'center',
     }
 });
@@ -126,52 +128,57 @@ export default class App extends React.Component {
         console.log("video_height", height);
 
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <Grid>
                     <Col size={20}>
                         <View style={styles.leftContainer}>
                             <Row>
-                                <ButtonGroup
-                                    textStyle={{color: "white"}}
+                                <Button
+                                    title="患者情報取得"
+                                    //outline
                                     onPress={this.update0Index}
-                                    selectedIndex={this.state.selected0Index}
-                                    buttons={["患者情報取得"]}
-                                    //containerStyle={{height: 35, width: 150, borderRadius: 10, backgroundColor: "gray"}}
+                                    buttonStyle={{
+                                        borderColor: "white",
+                                        borderWidth: 0,
+                                        borderRadius: 10,
+                                    }}
                                 />
+                                {/*<ButtonGroup*/}
+                                    {/*textStyle={{color: "white"}}*/}
+                                    {/*onPress={this.update0Index}*/}
+                                    {/*selectedIndex={this.state.selected0Index}*/}
+                                    {/*buttons={["患者情報取得"]}*/}
+                                    {/*containerStyle={{height: 35, width: 150, borderRadius: 10, backgroundColor: "gray"}}*/}
+                                {/*/>*/}
                             </Row>
-                            <Row>
-                                <FormLabel
-                                    //labelStyle={{color: "white", fontSize: 22, width: 180}}
-                                >
-                                    ID:{this.state.id}
+                            <Row style={{marginRight: "auto"}}>
+                                <FormLabel labelStyle={{color: "gray"}}
+                                >ID:<Text style={{color: "white"}}>{this.state.id}</Text>
                                 </FormLabel>
                             </Row>
-                            <Row>
-                                <FormLabel
-                                //    labelStyle={{color: "white", fontSize: 22, width: 180}}
-                                >氏名:{this.state.name}</FormLabel>
+                            <Row style={{marginRight: "auto"}}>
+                                <FormLabel labelStyle={{color: "gray"}}
+                                >氏名:<Text style={{color: "white"}}>{this.state.name}</Text>
+                                </FormLabel>
                             </Row>
-                            <Row>
-                                <FormLabel
-                                    //labelStyle={{color: "white", fontSize: 22, width: 100}}
-                                >年齢:{this.state.age}</FormLabel>
+                            <Row style={{marginRight: "auto"}}>
+                                <FormLabel labelStyle={{color: "gray"}}
+                                >年齢:<Text style={{color: "white"}}>{this.state.age}</Text></FormLabel>
                             </Row>
-                            <Row>
-                                <FormLabel
-                                //    labelStyle={{color: "white", fontSize: 22, width: 100}}
-                                >性別:{this.state.sex}</FormLabel>
+                            <Row style={{marginRight: "auto"}}>
+                                <FormLabel labelStyle={{color: "gray"}}
+                                >性別:<Text style={{color: "white"}}>{this.state.sex}</Text></FormLabel>
                             </Row>
-                            <Row>
-                                <FormLabel
-                                //    labelStyle={{color: "white", fontSize: 22, width: 100}}
-                                >{this.state.cnt}枚</FormLabel>
+                            <Row style={{marginRight: "auto"}}>
+                                <FormLabel labelStyle={{color: "gray"}}
+                                >枚数:<Text style={{color: "white"}}>{this.state.cnt}</Text></FormLabel>
                             </Row>
                             <Row>
                                 <ButtonGroup
                                     onPress={this.update1Index}
                                     selectedIndex={this.state.selected1Index}
                                     buttons={['記録', '取消', '終了']}
-                                    //containerStyle={{height: 100}}
+                                    containerStyle={{height: 100,width: 80}}
                                 />
                             </Row>
                             <Row>
@@ -207,7 +214,7 @@ export default class App extends React.Component {
                         </View>
                     </Col>
                 </Grid>
-            </View>
+            </SafeAreaView>
         );
     }
 }
