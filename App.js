@@ -5,7 +5,6 @@ import {
     Text,
     View,
     SafeAreaView,
-    TouchableHighlight
 } from 'react-native';
 import {
     Video,
@@ -20,9 +19,7 @@ import {
 
 import {
     FormLabel,
-    FormInput,
     ButtonGroup,
-    Button
 } from 'react-native-elements';
 
 const styles = StyleSheet.create({
@@ -147,7 +144,12 @@ export default class App extends React.Component {
                                     onPress={this.update0Index}
                                     selectedIndex={this.state.selected0Index}
                                     buttons={["患者情報取得"]}
-                                    containerStyle={{height: 30, width: buGrpWidth, borderRadius: 15, backgroundColor: "gray"}}
+                                    containerStyle={{
+                                        height: 30,
+                                        width: buGrpWidth,
+                                        borderRadius: 15,
+                                        backgroundColor: "gray"
+                                    }}
                                 />
                             </Row>
                             <Row style={{marginRight: "auto"}}>
@@ -178,7 +180,12 @@ export default class App extends React.Component {
                                     onPress={this.update1Index}
                                     selectedIndex={this.state.selected1Index}
                                     buttons={['記録', '取消', '終了']}
-                                    containerStyle={{height: 30,width:buGrpWidth,borderRadius: 15,backgroundColor: "gray"}}
+                                    containerStyle={{
+                                        height: 30,
+                                        width: buGrpWidth,
+                                        borderRadius: 15,
+                                        backgroundColor: "gray"
+                                    }}
                                 />
                             </Row>
                             <Row>
@@ -187,7 +194,12 @@ export default class App extends React.Component {
                                     onPress={this.update2Index}
                                     selectedIndex={this.state.selected2Index}
                                     buttons={["Voice"]}
-                                    containerStyle={{height: 30,width:buGrpWidth,borderRadius: 15,backgroundColor: "gray"}}
+                                    containerStyle={{
+                                        height: 30,
+                                        width: buGrpWidth,
+                                        borderRadius: 15,
+                                        backgroundColor: "gray"
+                                    }}
                                 />
                             </Row>
                             <Row>
@@ -196,7 +208,12 @@ export default class App extends React.Component {
                                     onPress={this.update3Index}
                                     selectedIndex={this.state.selected3Index}
                                     buttons={["1", "2", "3", "4"]}
-                                    containerStyle={{height: 30,width:buGrpWidth,borderRadius: 15,backgroundColor: "gray"}}
+                                    containerStyle={{
+                                        height: 30,
+                                        width: buGrpWidth,
+                                        borderRadius: 15,
+                                        backgroundColor: "gray"
+                                    }}
                                 />
                             </Row>
                         </View>
@@ -209,7 +226,7 @@ export default class App extends React.Component {
                                 resizeMode={Expo.Video.RESIZE_MODE_CONTAIN}
                                 rate={1.0}
                                 volume={this.state.volume}
-                                style={{width:f_width , height:f_height}}
+                                style={{width: f_width, height: f_height}}
                                 isMuted={this.state.mute}
                                 useNativeControls={true}
                             />
